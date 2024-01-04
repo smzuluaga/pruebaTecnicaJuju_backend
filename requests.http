@@ -1,0 +1,28 @@
+###
+POST http://localhost:9000/api/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Camilo Vargas",
+    "age" : 83,
+    "email": "camivargas@email.com"
+}
+
+###
+GET http://localhost:9000/api/users HTTP/1.1
+
+###
+GET http://localhost:9000/api/users/6596768f6fdcf4db0b773afd HTTP/1.1
+
+###
+PUT http://localhost:9000/api/users/659675a66fdcf4db0b773afb HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Camilo Perez",
+    "age" : 26,
+    "email": "camivargas@email.com"
+}
+
+###
+DELETE http://localhost:9000/api/users/6596768f6fdcf4db0b773afd HTTP/1.1
