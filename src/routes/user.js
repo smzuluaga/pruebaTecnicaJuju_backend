@@ -33,6 +33,27 @@ router.get('/users/:id', (req, res) => {
     .catch((error)=> res.json({message: error}));
 })
 
+//Login api
+router.get('/users/login/:email/:password', (req, res) => {
+    const {email, password} = req.params;
+
+    userSchema
+    .find()
+    // .then((data) => res.json(data.filter(user=>user.email=== email)))
+    .then((data) => {
+        let foundUser = data.filter(usuario => usuario.email === email)
+
+        // res.json({message: "Found", value: foundUser})
+        
+        if (!foundUser){
+            res.json({message:"User not Found1", value: null})
+        }
+        
+        foundUser[0].password == password ? res.json({message: "Access Allowed", value: foundUser}) : res.json({message:"User or Password Wrong", value: null})
+    })
+    .catch((error) => res.json({mesage: error}))
+})
+
 //Update By Id
 router.put('/users/:id', (req, res) => {
     const {id} = req.params;

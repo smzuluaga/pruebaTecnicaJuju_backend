@@ -2,17 +2,28 @@ const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const userRoutes = require('./routes/user')
+const bookRoutes = require('./routes/book')
+const cors = require('cors')
+// const bodyParser = require('body-parser') // NO ES NECESARIO
 
 const app = express();
 const port = process.env.PORT || 9000;
 
-// middelware
+// middelwares
 app.use(express.json());
 app.use('/api', userRoutes);
+app.use('/api', bookRoutes);
+app.use(cors());
+
+app.options('*', cors({
+    allowedHeaders:['Content-Type', 'Authorization']
+}));
+// app.use(bodyParser.json());  // NO ES NECESARIO 
+// app.use(bodyParser.urlencoded({extended: true}))  // NO ES NECESARIO
 
 //routes
 app.get("/", (req, res) => {
-    res.send("Welcome to my API");
+    res.send("Welcome to my bookstore API");
 })
 
 // MongoDB Conection
