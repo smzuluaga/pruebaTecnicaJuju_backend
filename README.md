@@ -13,7 +13,7 @@
 5. Abrir la terminal de git bash dentro de la carpeta creada.
     
 6. Ejecutar el siguiente comando en la terminal
-	`$ npm install nodemon -D`
+	`npm install nodemon -D`
 
 7. Luego ejecutar el siguiente comando en la terminal
 	`npm run start`
