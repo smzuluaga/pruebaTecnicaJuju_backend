@@ -7,17 +7,18 @@ const cors = require('cors')
 // const bodyParser = require('body-parser') // NO ES NECESARIO
 
 const app = express();
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 3000;
 
 // middelwares
+app.use(cors());
 app.use(express.json());
 app.use('/api', userRoutes);
 app.use('/api', bookRoutes);
-app.use(cors());
 
-app.options('*', cors({
-    allowedHeaders:['Content-Type', 'Authorization']
-}));
+// app.options('*', cors({
+//     allowedHeaders:['Content-Type', 'Authorization'],
+//     allowedOrigin:"*"
+// }));
 // app.use(bodyParser.json());  // NO ES NECESARIO 
 // app.use(bodyParser.urlencoded({extended: true}))  // NO ES NECESARIO
 
